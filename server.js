@@ -29,7 +29,11 @@ app.get('/', (req, res) => {
 
 // API Routes mounting
 const reportRoutes = require('./routes/reports');
-app.use('/api/reports', reportRoutes);
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PATCH'],
+  allowedHeaders: ['Content-Type']
+}));
 
 // Catch-all route handler for non-existent routes
 app.use((req, res, next) => {
